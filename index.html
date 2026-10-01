@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Création Expert | Studio — Bots & serveurs Discord</title>
+<meta name="description" content="Studio professionnel pour serveurs Discord : bots sur mesure, serveurs configurés, design premium.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Création&nbsp;Expert <span class="logo-accent">| Studio</span></a>
+
+    <div class="nav-links">
+      <a href="#services" class="nav-link">Offres</a>
+      <a href="#process" class="nav-link">Processus</a>
+      <a href="#portfolio" class="nav-link">Réalisations</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn-icon" id="themeToggle" onclick="Home.toggleTheme()" title="Thème clair / sombre">🌙</button>
+      <div id="navGuest" class="nav-auth">
+        <a href="#" class="btn btn-ghost" onclick="UI.openModal('login')">Connexion</a>
+        <a href="#" class="btn btn-blurple" onclick="UI.openModal('register')">Créer un compte</a>
+      </div>
+      <div id="navUser" class="nav-auth hidden">
+        <div class="user-chip" onclick="location.href='dashboard.html'">
+          <span id="navUsername">Utilisateur</span>
+          <div class="user-avatar" id="navAvatar">U</div>
+        </div>
+        <button class="btn btn-ghost" onclick="UI.logout()">Déconnexion</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-badge">✦ Studio de création pour serveurs Discord</div>
+  <h1>Créez. <span class="grad">Expertisez.</span> Dominez.</h1>
+  <p class="hero-sub">
+    Des bots Discord professionnels, des serveurs configurés aux petits oignons,
+    et un code de qualité — livrés par une équipe d'experts passionnés.
+  </p>
+  <div class="hero-cta">
+    <a href="#services" class="btn btn-blurple btn-lg">Découvrir nos offres</a>
+    <a href="#" class="btn btn-ghost btn-lg" onclick="UI.openModal('register')">Créer mon compte</a>
+  </div>
+  <div class="hero-stats">
+    <div><strong class="counter" data-to="500">0</strong><span>Serveurs aidés</span></div>
+    <div><strong class="counter" data-to="1000">0</strong><span>Bots livrés</span></div>
+    <div><strong>98%</strong><span>Clients satisfaits</span></div>
+    <div><strong>4.9<span class="unit">/5</span></strong><span>Note moyenne</span></div>
+  </div>
+</header>
+
+<!-- ================= POURQUOI NOUS ================= -->
+<section class="section" id="features">
+  <div class="section-head">
+    <h2 class="section-title">Pourquoi nous <span class="grad">choisir</span> ?</h2>
+    <p class="section-sub">Un studio complet, pas juste un codeur.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat reveal"><div class="feat-icon">⚡</div><h3>Livraison rapide</h3><p>Votre serveur ou bot livré en 24 à 72 h, tests inclus.</p></div>
+    <div class="feat reveal"><div class="feat-icon">💎</div><h3>Qualité premium</h3><p>Code propre, commenté et documenté — facile à maintenir.</p></div>
+    <div class="feat reveal"><div class="feat-icon">🛠️</div><h3>Sur mesure</h3><p>Chaque commande est adaptée à votre communauté, pas un copier-coller.</p></div>
+    <div class="feat reveal"><div class="feat-icon">🔁</div><h3>Révisions incluses</h3><p>Jusqu'à 2 retouches offertes après la livraison.</p></div>
+    <div class="feat reveal"><div class="feat-icon">💬</div><h3>Support humain</h3><p>Une équipe joignable sur Discord qui répond vraiment.</p></div>
+    <div class="feat reveal"><div class="feat-icon">🔒</div><h3>Sécurité</h3><p>Permissions verrouillées, anti-raid et bonnes pratiques dès le départ.</p></div>
+  </div>
+</section>
+
+<!-- ================= PROCESSUS ================= -->
+<section class="section" id="process">
+  <div class="section-head">
+    <h2 class="section-title">Comment ça <span class="grad">marche</span> ?</h2>
+    <p class="section-sub">Quatre étapes simples, du premier clic à la livraison.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><div class="step-num">1</div><h3>Créez un compte</h3><p>Inscription en 30 secondes, accès immédiat au dashboard.</p></div>
+    <div class="step reveal"><div class="step-num">2</div><h3>Remplissez le formulaire</h3><p>Décrivez votre projet : modules, thème, délai, budget.</p></div>
+    <div class="step reveal"><div class="step-num">3</div><h3>Paiement sécurisé</h3><p>Réglez via PayPal ou validez votre devis (offre gratuite).</p></div>
+    <div class="step reveal"><div class="step-num">4</div><h3>Livraison & suivi</h3><p>Suivez l'avancement dans votre dashboard, livraison sur Discord.</p></div>
+  </div>
+</section>
+
+<!-- ================= OFFRES ================= -->
+<section id="services" class="section">
+  <div class="section-head">
+    <h2 class="section-title">Nos <span class="grad">offres</span></h2>
+    <p class="section-sub">Choisissez la formule adaptée à votre projet.</p>
+  </div>
+  <div class="cards">
+
+    <div class="card reveal">
+      <div class="card-icon green">🏠</div>
+      <h3>Créer un serveur Discord gratuit</h3>
+      <p class="price">Gratuit <span class="price-tag">Offre 1</span></p>
+      <ul class="checklist">
+        <li>Serveur Discord créé de A à Z</li>
+        <li>Salons, catégories et rôles organisés</li>
+        <li>Permissions configurées</li>
+        <li>Thème et ambiance personnalisée</li>
+        <li>Règlement et salon d'infos</li>
+      </ul>
+      <button class="btn btn-ghost btn-block" onclick="Auth.requireAccess('gratuit')">Commander</button>
+    </div>
+
+    <div class="card featured reveal">
+      <div class="card-badge">Populaire</div>
+      <div class="card-icon blurple">🤖</div>
+      <h3>Bot brut avec codes</h3>
+      <p class="price">$1.00 USD <span class="price-tag">Offre 2</span></p>
+      <ul class="checklist">
+        <li>Bot Discord fonctionnel</li>
+        <li>Codes sources standard inclus</li>
+        <li>Commandes de base prêtes à l'emploi</li>
+        <li>Schéma d'installation fourni</li>
+        <li>Non personnalisé (formule standard)</li>
+      </ul>
+      <button class="btn btn-blurple btn-block" onclick="Auth.requireAccess('bot-brut')">Commander — $1</button>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon gold">⚡</div>
+      <h3>Bot avec codes personnalisés</h3>
+      <p class="price">$2.00 USD <span class="price-tag">Offre 3</span></p>
+      <ul class="checklist">
+        <li>Bot Discord sur mesure</li>
+        <li>Codes 100% personnalisés</li>
+        <li>Commandes dédiées à votre serveur</li>
+        <li>Fonctions exclusives sur demande</li>
+        <li>Support prioritaire inclus</li>
+      </ul>
+      <button class="btn btn-gold btn-block" onclick="Auth.requireAccess('bot-perso')">Commander — $2</button>
+    </div>
+
+  </div>
+  <p class="locked-note hidden" id="lockedNote">🔒 Vous devez créer un <a href="#" onclick="UI.openModal('register')">compte</a> et être connecté pour accéder aux commandes.</p>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="section" id="portfolio">
+  <div class="section-head">
+    <h2 class="section-title">Nos <span class="grad">réalisations</span></h2>
+    <p class="section-sub">Quelques exemples de ce que le studio a produit.</p>
+  </div>
+  <div class="pf-filters">
+    <button class="btn btn-ghost active" onclick="Home.filterPF('all', this)">Tout</button>
+    <button class="btn btn-ghost" onclick="Home.filterPF('serveur', this)">Serveurs</button>
+    <button class="btn btn-ghost" onclick="Home.filterPF('bot', this)">Bots</button>
+    <button class="btn btn-ghost" onclick="Home.filterPF('design', this)">Design</button>
+  </div>
+  <div class="pf-grid" id="pfGrid">
+    <div class="pf-item reveal" data-cat="serveur"><div class="pf-thumb">🏰</div><h4>La Forteresse</h4><p>Serveur gaming 12 000 membres — salons, rôles, anti-raid.</p><span class="pf-tag">Serveur</span></div>
+    <div class="pf-item reveal" data-cat="bot"><div class="pf-thumb">🤖</div><h4>EchoBot</h4><p>Bot modération + tickets + logs pour communauté crypto.</p><span class="pf-tag">Bot</span></div>
+    <div class="pf-item reveal" data-cat="design"><div class="pf-thumb">🎨</div><h4>Néon Design</h4><p>Bannières, icônes et emotes animées personnalisées.</p><span class="pf-tag">Design</span></div>
+    <div class="pf-item reveal" data-cat="bot"><div class="pf-thumb">🎵</div><h4>BeatMates</h4><p>Bot musique multi-serveurs avec file d'attente partagée.</p><span class="pf-tag">Bot</span></div>
+    <div class="pf-item reveal" data-cat="serveur"><div class="pf-thumb">📚</div><h4>Campus Édu</h4><p>Serveur d'entraide scolaire avec systèmes de niveaux.</p><span class="pf-tag">Serveur</span></div>
+    <div class="pf-item reveal" data-cat="design"><div class="pf-thumb">✨</div><h4>Welcome Kit</h4><p>Pack complet : image de bienvenue, règles, embeds stylés.</p><span class="pf-tag">Design</span></div>
+  </div>
+</section>
+
+<!-- ================= TÉMOIGNAGES ================= -->
+<section class="section" id="avis">
+  <div class="section-head">
+    <h2 class="section-title">Ils nous font <span class="grad">confiance</span></h2>
+  </div>
+  <div class="quote-box reveal" id="quoteBox">
+    <div class="quote-avatar">🦊</div>
+    <p class="quote-text" id="quoteText">"Serveur livré en 30 h, tout était déjà configuré. Franchement impressionné."</p>
+    <p class="quote-author" id="quoteAuthor">— Luna_M, fondatrice de La Forteresse</p>
+    <div class="dots" id="quoteDots"></div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="section">
+  <div class="section-head">
+    <h2 class="section-title">Questions <span class="grad">fréquentes</span></h2>
+  </div>
+  <input class="faq-search" id="faqSearch" placeholder="🔍 Rechercher dans la FAQ..." oninput="Home.filterFAQ(this.value)">
+  <p class="faq-empty hidden" id="faqEmpty">Aucune question ne correspond à votre recherche.</p>
+  <div class="faq" id="faqList">
+    <details data-q="livraison paiement paypal contact discord"><summary>Comment fonctionne la livraison ?</summary><p>Après votre commande et le paiement, notre équipe vous contacte via Discord. La livraison se fait sous 24 à 72 h selon l'offre.</p></details>
+    <details data-q="compte inscription dashboard suivi"><summary>Pourquoi créer un compte ?</summary><p>Les commandes, les codes et le suivi sont réservés aux membres. Votre compte vous donne accès au dashboard et au paiement.</p></details>
+    <details data-q="paiement paypal carte crypto moyens"><summary>Quels moyens de paiement acceptez-vous ?</summary><p>Nous acceptons PayPal. D'autres moyens de paiement seront ajoutés progressivement.</p></details>
+    <details data-q="personnalisation bot brut standard offre 3"><summary>Puis-je demander une personnalisation du bot brut ?</summary><p>Le bot brut est fourni en formule standard. Pour des codes personnalisés, choisissez l'offre 3 ($2).</p></details>
+    <details data-q="remboursement garantie annulation"><summary>Puis-je être remboursé ?</summary><p>Oui, si la livraison n'a pas encore commencé. Une fois le projet démarré, nous proposons une solution de remplacement ou un avoir.</p></details>
+    <details data-q="hébergement maintenance bot en ligne 24/7"><summary>Hébergez-vous les bots ?</summary><p>Nous livrons le code et le guide d'hébergement. Un service d'hébergement managé est en préparation.</p></details>
+    <details data-q="délai urgent express rapide"><summary>Et si j'ai besoin d'un délai urgent ?</summary><p>Choisissez l'option "Urgent (12-24 h)" dans le formulaire de commande.</p></details>
+    <details data-q="langue anglais français multilingue"><summary>Vous travaillez dans quelles langues ?</summary><p>Français et anglais, et nous configurons les serveurs multilingues si besoin.</p></details>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="section-head">
+    <h2 class="section-title">Nous <span class="grad">contacter</span></h2>
+    <p class="section-sub">Une question, un devis, un partenariat ? Écrivez-nous.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info reveal">
+      <div class="c-line"><span class="c-ico">💬</span><div><b>Discord</b><span>contact@creationexpert</span></div></div>
+      <div class="c-line"><span class="c-ico">⏱️</span><div><b>Réponse</b><span>en moins de 6 h</span></div></div>
+      <div class="c-line"><span class="c-ico">🌍</span><div><b>Horaires</b><span>7j/7, 9h – 22h (CET)</span></div></div>
+    </div>
+    <form class="contact-form reveal" onsubmit="Home.submitContact(); return false;">
+      <div class="form-group"><label>Nom / pseudo</label><input id="c-name" placeholder="Votre nom" required></div>
+      <div class="form-group"><label>Discord ou e-mail</label><input id="c-reply" placeholder="Comment vous joindre"></div>
+      <div class="form-group full"><label>Message</label><textarea id="c-msg" rows="4" placeholder="Votre message..." required></textarea></div>
+      <div class="form-group full"><button class="btn btn-blurple btn-block" type="submit">Envoyer le message</button></div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta-banner reveal">
+  <h2>Prêt à donner vie à <span class="grad">votre serveur</span> ?</h2>
+  <p>Lancez votre premier projet aujourd'hui — l'offre 1 est gratuite.</p>
+  <a href="#" class="btn btn-blurple btn-lg" onclick="UI.openModal('register')">Commencer maintenant</a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="foot-cols">
+    <div class="foot-col">
+      <span class="logo">Création&nbsp;Expert <span class="logo-accent">| Studio</span></span>
+      <p class="foot-txt">Bots & serveurs Discord professionnels, livrés avec soin.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Navigation</h5>
+      <a href="#services">Offres</a><a href="#portfolio">Réalisations</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h5>Légal</h5>
+      <a href="#">Conditions d'utilisation</a><a href="#">Confidentialité</a><a href="#">Remboursement</a>
+    </div>
+    <div class="foot-col">
+      <h5>Newsletter</h5>
+      <p class="foot-txt">Nouvelles offres et mises à jour, une fois par mois.</p>
+      <div class="news-row">
+        <input id="newsMail" placeholder="votre@email.com">
+        <button class="btn btn-blurple" onclick="Home.subscribe()">OK</button>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Création Expert | Studio — Tous droits réservés</span>
+    <span>🔒 Paiement sécurisé par PayPal</span>
+  </div>
+</footer>
+
+<!-- ================= MODALS ================= -->
+<div class="modal-overlay hidden" id="modalOverlay" onclick="UI.overlayClick(event)">
+  <!-- LOGIN -->
+  <div class="modal hidden" id="modal-login">
+    <h2>Content de te revoir !</h2>
+    <p class="modal-sub">Connecte-toi pour accéder aux commandes.</p>
+    <input type="text" id="login-username" placeholder="Nom d'utilisateur" autocomplete="username">
+    <input type="password" id="login-password" placeholder="Mot de passe" autocomplete="current-password">
+    <button class="btn btn-blurple btn-block" onclick="Auth.login()">Se connecter</button>
+    <p class="modal-switch">Pas encore de compte ? <a href="#" onclick="UI.switchModal('register')">S'inscrire</a></p>
+  </div>
+  <!-- REGISTER -->
+  <div class="modal hidden" id="modal-register">
+    <h2>Créer un compte</h2>
+    <p class="modal-sub">Rejoins le studio en quelques secondes.</p>
+    <input type="text" id="reg-username" placeholder="Nom d'utilisateur (min. 3 caractères)">
+    <input type="email" id="reg-email" placeholder="Adresse e-mail">
+    <input type="text" id="reg-discord" placeholder="Ton pseudo Discord (ex: user#1234)">
+    <input type="password" id="reg-password" placeholder="Mot de passe (min. 4 caractères)">
+    <button class="btn btn-blurple btn-block" onclick="Auth.register()">S'inscrire</button>
+    <p class="modal-switch">Déjà un compte ? <a href="#" onclick="UI.switchModal('login')">Se connecter</a></p>
+  </div>
+  <!-- COMMANDE -->
+  <div class="modal modal-wide hidden" id="modal-order">
+    <h2 id="orderTitle">Commande</h2>
+    <p class="modal-sub">Remplis le formulaire détaillé pour finaliser ta commande.</p>
+    <div class="form-grid">
+      <div class="form-group"><label>Numéro de contact Discord *</label><input id="o-discord" placeholder="ex: pseudo#0001"></div>
+      <div class="form-group"><label>Nom du serveur / projet *</label><input id="o-server" placeholder="Nom de ton serveur Discord"></div>
+      <div class="form-group"><label>Nombre de membres (approx.)</label><input id="o-members" type="number" min="0" placeholder="ex: 500"></div>
+      <div class="form-group"><label>Langue du serveur</label>
+        <select id="o-lang"><option>Français</option><option>Anglais</option><option>Autre</option></select>
+      </div>
+      <div class="form-group full"><label>Modules souhaités (clique les cases voulu)</label>
+        <div class="chk-grid">
+          <label class="chk"><input type="checkbox" name="o-feature" value="Modération (kick, ban, mute, warn)"> Modération (kick, ban, mute, warn)</label>
+          <label class="chk"><input type="checkbox" name="o-feature" value="Bienvenue / au revoir automatiques"> Bienvenue / au revoir auto</label>
+          <label class="chk"><input type="checkbox" name="o-feature" value="Salon suggestions & tickets"> Suggestions & tickets</label>
+          <label class="chk"><input type="checkbox" name="o-feature" value="Logs (messages, sanctions)"> Logs (messages, sanctions)</label>
+          <label class="chk"><input type="checkbox" name="o-feature" value="Économie / niveaux (XP)"> Économie / niveaux (XP)</label>
+          <label class="chk"><input type="checkbox" name="o-feature" value="Giveaways automatiques"> Giveaways auto</label>
+          <label class="chk"><input type="checkbox" name="o-feature" value="Protection anti-raid / anti-spam"> Anti-raid / anti-spam</label>
+          <label class="chk"><input type="checkbox" name="o-feature" value="Musique"> Musique</label>
+        </div>
+      </div>
+      <div class="form-group"><label>Thème / ambiance</label><input id="o-theme" placeholder="ex: gaming, crypto, communauté..."></div>
+      <div class="form-group full"><label>Description détaillée du projet *</label>
+        <textarea id="o-desc" rows="4" placeholder="Décris avec un maximum de détails ce que tu souhaites : fonctionnalités, design, commandes spécifiques, etc."></textarea>
+      </div>
+      <div class="form-group full"><label>Exemples / références</label>
+        <textarea id="o-refs" rows="2" placeholder="Coller des liens vers des serveurs ou bots que tu aimes"></textarea>
+      </div>
+      <div class="form-group"><label>Délai souhaité</label>
+        <select id="o-delay"><option>Standard (24-72h)</option><option>Urgent (12-24h)</option><option>Flexible</option></select>
+      </div>
+      <div class="form-group"><label>Budget additionnel (options)</label>
+        <input id="o-budget" placeholder="ex: +$5 pour logo premium (optionnel)">
+      </div>
+      <div class="form-group full"><label>Informations supplémentaires</label>
+        <textarea id="o-extra" rows="2" placeholder="Toute information utile pour notre équipe"></textarea>
+      </div>
+    </div>
+    <div class="order-summary" id="orderSummary"></div>
+    <div class="pay-box">
+      <p class="pay-title">💳 Paiement sécurisé</p>
+      <div id="paypal-order-container"></div>
+      <p class="pay-dim">Paiement via PayPal — d'autres moyens de paiement arrivent bientôt.</p>
+    </div>
+    <button class="btn btn-green btn-block" onclick="Order.submit()">✅ Valider la commande (envoyer la soumission)</button>
+    <p class="modal-switch"><a href="#" onclick="UI.closeModal()">Annuler</a></p>
+  </div>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+
+<script src="js/paypal.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

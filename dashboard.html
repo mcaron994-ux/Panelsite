@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Dashboard — Création Expert | Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo"> Création Expert <span class="logo-accent">| Studio</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="user-chip" onclick="Dash.tab('settings', document.querySelector('.side-link[data-tab=\"settings\"]'))">
+        <span id="navUsername">Utilisateur</span>
+        <div class="user-avatar" id="navAvatar">U</div>
+      </div>
+      <button class="btn btn-ghost" onclick="Auth.logout()">Déconnexion</button>
+    </div>
+  </nav>
+
+  <div class="dash-wrap">
+    <aside class="sidebar">
+      <a href="#overview" class="dash-side-link side-link active" data-tab="overview" onclick="Dash.tab('overview', this)">📊 Vue d'ensemble</a>
+      <a href="#orders" class="dash-side-link side-link" data-tab="orders" onclick="Dash.tab('orders', this)">📦 Mes commandes</a>
+      <a href="#messages" class="dash-side-link side-link" data-tab="messages" onclick="Dash.tab('messages', this)">📨 Mes messages</a>
+      <a href="#settings" class="dash-side-link side-link" data-tab="settings" onclick="Dash.tab('settings', this)">⚙️ Paramètres du compte</a>
+      <a href="#admin" class="dash-side-link side-link hidden" data-tab="admin" id="adminLink" onclick="Dash.tab('admin', this)">💻 Panel dev</a>
+      <a href="index.html" class="dash-side-link side-link" onclick="Auth.logout()">🚪 Déconnexion</a>
+    </aside>
+
+    <main class="dash-main">
+      <!-- ================= OVERVIEW ================= -->
+      <section class="tab" id="tab-overview">
+        <h1>Salut <span id="ovHello">—</span> 👋</h1>
+        <div class="dev-stats" id="userStats"></div>
+        <div class="panel">
+          <h3>📦 Vos dernières commandes</h3>
+          <div id="ovRecent" class="orders-list"></div>
+        </div>
+        <div class="panel">
+          <h3>📈 Activité 7 derniers jours</h3>
+          <canvas id="userChart" width="560" height="160"></canvas>
+        </div>
+        <div class="panel">
+          <h3>💡 Astuce du moment</h3>
+          <p class="dim" id="ovTip"></p>
+        </div>
+      </section>
+
+      <!-- ================= MES COMMANDES ================= -->
+      <section class="tab hidden" id="tab-orders">
+        <h1>📦 Mes commandes</h1>
+        <div class="admin-tools">
+          <input id="ordFilter" placeholder="🔍 Rechercher dans mes commandes..." oninput="Dash.renderOrders()">
+          <select id="ordStatus" onchange="Dash.renderOrders()">
+            <option value="">Tous les statuts</option>
+            <option>En attente</option><option>Payé</option><option>En cours</option><option>Livré</option><option>Annulé</option>
+          </select>
+        </div>
+        <div id="myOrders" class="orders-list"></div>
+      </section>
+
+      <!-- ================= MES MESSAGES ================= -->
+      <section class="tab hidden" id="tab-messages">
+        <h1>📨 Mes messages</h1>
+        <div class="panel">
+          <h3>✉️ Nouveau message au studio</h3>
+          <div class="form-grid">
+            <div class="form-group full"><label>Sujet</label><input id="u-msg-sujet" placeholder="Sujet de votre message"></div>
+            <div class="form-group full"><label>Message</label><textarea id="u-msg" rows="3" placeholder="Votre message..."></textarea></div>
+          </div>
+          <button class="btn btn-blurple" onclick="Dash.sendMsg()">📨 Envoyer</button>
+        </div>
+        <div id="userMsgs" class="orders-list"></div>
+      </section>
+
+      <!-- ================= PARAMÈTRES DU COMPTE ================= -->
+      <section class="tab hidden" id="tab-settings">
+        <h1>⚙️ Paramètres du compte</h1>
+
+        <!-- Profil -->
+        <div class="panel">
+          <h3>👤 Informations du profil</h3>
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>Photo de profil</label>
+              <div class="avatar-row">
+                <div class="user-avatar avatar-big" id="avatarPreview">U</div>
+                <div class="avatar-actions">
+                  <input type="file" id="avatarFile" accept="image/*" class="hidden" onchange="Dash.changeAvatar(this)">
+                  <button class="btn btn-blurple" type="button" onclick="document.getElementById('avatarFile').click()">📷 Changer la photo</button>
+                  <button class="btn btn-ghost" type="button" onclick="Dash.removeAvatar()">🗑️ Retirer la photo</button>
+                </div>
+              </div>
+              <p class="dims" style="font-size:12px;margin-top:8px">JPG ou PNG, 1 Mo max. La photo est redimensionnée en 256×256 automatiquement.</p>
+            </div>
+            <div class="form-group"><label>Nom d'utilisateur</label><input id="s-username"></div>
+            <div class="form-group"><label>E-mail</label><input id="s-email" type="email"></div>
+            <div class="form-group full"><label>Pseudo Discord</label><input id="s-discord" placeholder="ex: pseudo#0001"></div>
+          </div>
+          <button class="btn btn-blurple" onclick="Dash.saveProfile()">💾 Enregistrer le profil</button>
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="panel">
+          <h3>🔒 Mot de passe</h3>
+          <div class="form-grid">
+            <div class="form-group"><label>Ancien mot de passe</label><input id="s-oldpass" type="password" placeholder="••••••"></div>
+            <div class="form-group"><label>Nouveau mot de passe</label><input id="s-newpass" type="password" placeholder="Min. 4 caractères"></div>
+          </div>
+          <button class="btn btn-blurple" onclick="Dash.saveProfile()">🔒 Changer le mot de passe</button>
+        </div>
+
+        <!-- Apparence -->
+        <div class="panel">
+          <h3>🎨 Apparence</h3>
+          <div class="d-actions">
+            <button class="btn btn-ghost" onclick="Home.toggleTheme()">🌙 / ☀️ Basculer clair / sombre</button>
+            <button class="btn btn-danger" onclick="Dash.deleteAccount()">🗑️ Supprimer mon compte</button>
+          </div>
+        </div>
+
+        <!-- Accès panel dev -->
+        <div class="panel">
+          <h3>🔑 Accès panel dev</h3>
+          <p class="dims">Vous avez reçu un code d'accès de la part de l'équipe ? Entrez-le ici pour débloquer le panel dev.</p>
+          <div class="unlock-row">
+            <input type="password" id="devCode" placeholder="Code d'accès">
+            <button class="btn btn-green" onclick="Dash.unlockAdmin()">Débloquer</button>
+          </div>
+          <p id="unlockMsg" class="form-msg"></p>
+        </div>
+      </section>
+
+      <!-- ================= PANEL DEV ================= -->
+      <section class="tab hidden" id="tab-admin">
+        <h1>💻 Panel dev</h1>
+        <div class="dev-stats" id="devStats"></div>
+
+        <div class="panel">
+          <h3>📈 Revenus des 14 derniers jours</h3>
+          <canvas id="devChart" width="680" height="180"></canvas>
+        </div>
+
+        <div class="admin-tools">
+          <input id="devSearch" placeholder="🔍 Rechercher (utilisateur, offre, Discord...)" oninput="Admin.render()">
+          <select id="devStatusFilter" onchange="Admin.render()">
+            <option value="">Tous les statuts</option>
+            <option>En attente</option><option>Payé</option><option>En cours</option><option>Livré</option><option>Annulé</option>
+          </select>
+          <select id="devOfferFilter" onchange="Admin.render()">
+            <option value="">Toutes les offres</option>
+            <option value="gratuit">Serveur Discord gratuit</option>
+            <option value="bot-brut">Bot brut (standard)</option>
+            <option value="bot-perso">Bot personnalisé</option>
+          </select>
+          <button class="btn btn-ghost" onclick="Admin.exportCSV()">⬇️ Exporter CSV</button>
+          <button class="btn btn-ghost" onclick="Admin.exportJSON()">⬇️ Sauvegarde JSON</button>
+          <button class="btn btn-danger" onclick="Admin.clearAll()">🗑️ Tout effacer</button>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Utilisateur</th><th>Discord</th><th>Offre</th><th>Prix</th><th>Serveur</th><th>Date</th><th>Heure</th><th>Statut</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="devOrdersBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Utilisateurs -->
+        <h2 style="margin-top:36px">👥 Utilisateurs &amp; inscriptions</h2>
+        <div class="admin-tools">
+          <input id="devUserSearch" placeholder="🔍 Rechercher un utilisateur..." oninput="Admin.renderUsers()">
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>#</th><th>Utilisateur</th><th>E-mail</th><th>Discord</th><th>Inscrit le</th><th>Commandes</th><th>Rôle</th><th>Actions</th></tr></thead>
+            <tbody id="devUsersBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Messages -->
+        <h2 style="margin-top:36px">📨 Messages reçus</h2>
+        <div id="devMsgs" class="orders-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="detail-overlay hidden" id="adminDetailOverlay" onclick="if(event.target===this) Admin.closeDetail()"></div>
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/paypal.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
